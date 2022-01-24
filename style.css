@@ -1,0 +1,101 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap');
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+ul li {
+    list-style-type: none;
+}
+
+input[type="button"] {
+    background: transparent;
+    border: none;
+}
+
+body{
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 18px;
+    background: hsl(0, 0%, 98%);
+}
+
+.header-img{
+    background: center / cover no-repeat url('/images/bg-mobile-light.jpg');
+    height: 30vh;
+    width: 100vw;
+    z-index: -1;
+    position: absolute;
+
+}
+
+main{
+    margin: 0 auto;
+    padding: 1em 3em;     
+    /* 54px */
+}
+
+.header-content{
+    margin: 0 auto;
+    padding: 2em 3em;
+    display: flex;
+    justify-content: space-between;
+}
+
+.header-content > h1 {
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 7px;
+}
+
+.input-container, .list-container, .btn-container{
+    background: white;
+    border-radius: 15px;
+    margin-bottom: 1em; 
+}
+
+.input-container {
+    padding: 1em;
+}
+
+.summary-container{
+    color: hsl(236, 9%, 61%);
+    display: flex;
+    justify-content: space-between;
+    padding: 1em;
+}
+
+.summary-container > input[type="button"]{
+    color: hsl(236, 9%, 61%);
+}
+
+.btn-container{
+    padding: 1em;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+#new-input{
+    width: 100%;
+    border: none;
+}
+
+.list-item{
+    display: flex;
+    justify-content: space-evenly;
+    border-bottom: 1px solid hsl(0, 0%, 98%);
+    padding: 1em;
+}
+
+.info{
+    margin-top: 3em;
+    text-align: center;
+    color:hsl(236, 9%, 61%);
+}
+
+.attribution { font-size: 11px; text-align: center; }
+.attribution a { color: hsl(228, 45%, 44%); }

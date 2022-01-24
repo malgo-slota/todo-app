@@ -2,31 +2,61 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
   
   <title>Frontend Mentor | Todo app</title>
-
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <style>
-    .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
-  </style>
+  <link href="style.css" rel="stylesheet"/>
 </head>
 <body>
+  
+  <header>
+    <div class="header-img"></div>
+    <div class="header-content">
+      <h1>Todo</h1>
+      <input type="checkbox">
+    </div>
+  </header>
+  
+  <main>
+    <div class="input-container">
+      <input type="text" placeholder="Create a new todo..." id="new-input">
+    </div>
 
-  Todo
+    <div class="list-container">
+      <ul>
+        <li class="list-item">
+          <input type="button"> 
+          <div>
+            Do yoga
+          </div>
+          <input type="button">
+        </li>
 
-  <!-- Add dynamic number --> items left
+        <li class="list-item">
+          <input type="button"> 
+          <div>
+            Bake a cake
+          </div>
+          <input type="button">
+        </li>
+      </ul>
+      <div class="summary-container">
+        <p><span>5</span> items left</p>
+        <input type="button" value="Clear Completed">
+      </div>
+    </div>
 
-  All
-  Active 
-  Completed
 
-  Clear Completed
-
-  Drag and drop to reorder list
+    <div class="btn-container">
+        <input type="button" value="All">
+        <input type="button" value="Active">
+        <input type="button" value="Completed">
+    </div>
+ 
+    <p class="info">Drag and drop to reorder list</p>
+  </main>
 
   <div class="attribution">
     Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
