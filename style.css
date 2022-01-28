@@ -1,5 +1,29 @@
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap');
 
+/* 
+### Primary
+
+- Bright Blue: hsl(220, 98%, 61%)
+
+### Light Theme
+
+- Very Light Gray: hsl(0, 0%, 98%)
+- Very Light Grayish Blue: hsl(236, 33%, 92%)
+- Light Grayish Blue: hsl(233, 11%, 84%)
+- Dark Grayish Blue: hsl(236, 9%, 61%)
+- Very Dark Grayish Blue: hsl(235, 19%, 35%)
+
+### Dark Theme
+
+- Very Dark Blue: hsl(235, 21%, 11%)
+- Very Dark Desaturated Blue: hsl(235, 24%, 19%)
+- Light Grayish Blue: hsl(234, 39%, 85%)
+- Light Grayish Blue (hover): hsl(236, 33%, 92%)
+- Dark Grayish Blue: hsl(234, 11%, 52%)
+- Very Dark Grayish Blue: hsl(233, 14%, 35%)
+- Very Dark Grayish Blue: hsl(237, 14%, 26%) */
+
+
 *, *::before, *::after {
     box-sizing: border-box;
 }
@@ -18,32 +42,86 @@ input[type="button"] {
     border: none;
 }
 
+input[type="text"] {
+    font-size: 1em;
+    color: hsl(235, 19%, 35%);
+    background: transparent;
+    font-weight: 400;
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+input[type="text"]::placeholder{
+    font-size: 0.8em;
+    color: hsl(236, 9%, 61%);
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+input:focus {
+    outline: none;
+}
+
 body{
     font-family: 'Josefin Sans', sans-serif;
     font-size: 18px;
-    background: hsl(0, 0%, 98%);
+    background-color: var(--main-bg);
+    color: var(--font-col);
+}
+
+.theme-light{
+    --main-bg: hsl(0, 0%, 98%);
+    --font-col: hsl(235, 19%, 35%);
+    --container-bg: white;
+    --border-btm:  1px solid hsl(0, 0%, 98%);
+    --theme-icon-bg:  url('/images/icon-moon.svg');
+    --header-img-bg:  center / cover no-repeat url('/images/bg-mobile-light.jpg');
+}
+
+.theme-dark{
+    --main-bg: hsl(235, 21%, 11%);
+    --font-col: hsl(0, 0%, 98%);
+    --container-bg: hsl(237, 14%, 26%);
+    --border-btm: 1px solid hsl(234, 11%, 52%);
+    --theme-icon-bg: url('./images/icon-sun.svg');
+    --header-img-bg: center / cover no-repeat url('/images/bg-mobile-dark.jpg');
+}
+
+.header-content #toggle-theme {
+    display: none;
+}
+
+.header-content #toggle-theme + label::before {
+    content: '';
+    background: var(--theme-icon-bg);
+    display: block;
+    width: 26px;
+    height: 26px;
+    cursor: pointer;
+}
+
+.header-content #toggle-theme + label::before {
+    background: var(--theme-icon-bg);
 }
 
 .header-img{
-    background: center / cover no-repeat url('/images/bg-mobile-light.jpg');
+    background: var(--header-img-bg);
     height: 30vh;
     width: 100vw;
     z-index: -1;
     position: absolute;
-
 }
 
 main{
     margin: 0 auto;
-    padding: 1em 3em;     
-    /* 54px */
+    padding: 1em 1.5em;  
+    max-width: 540px;   
 }
 
 .header-content{
     margin: 0 auto;
-    padding: 2em 3em;
+    padding: 2em 1.5em;
     display: flex;
     justify-content: space-between;
+    max-width: 540px;
 }
 
 .header-content > h1 {
@@ -53,13 +131,53 @@ main{
 }
 
 .input-container, .list-container, .btn-container{
-    background: white;
-    border-radius: 15px;
+    background: var(--container-bg);
+    border-radius: 10px;
     margin-bottom: 1em; 
 }
 
+/* checkbox */
+ul li input[type="checkbox"]{
+    /* display: none; */
+}
+
+ul li input[type="checkbox"]:checked{
+    /* position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    width: 0;
+    height: 0; */
+}
+
+ul li input[type="checkbox"]:checked ~ .list-item{
+    color: hsl(236, 9%, 61%);
+    text-decoration: line-through;
+}
+
+.checkbox-circle{
+    width: 20px; 
+    height: 20px;
+    padding: 5px;
+    border: 1px solid hsl(236, 9%, 61%);
+    border-radius: 20px;
+}
+
+ul li input[type="checkbox"]:checked ~ .checkbox-circle{
+    content: url('/images/icon-check.svg');
+    background: linear-gradient(hsl(192, 100%, 67%),hsl(280, 87%, 65%));
+    border: none;
+}
+/* end of checkbox */
+
 .input-container {
     padding: 1em;
+}
+
+input[type="button"].delete-btn{
+    background: no-repeat url('/images/icon-cross.svg');
+    width: 20px;
+    height: 20px;
+    color:hsl(228, 45%, 44%);
 }
 
 .summary-container{
@@ -79,15 +197,19 @@ main{
     justify-content: space-evenly;
 }
 
+.btn-container > input[type="button"]:hover, .btn-container > input[type="button"]:focus{
+    color: hsl(220, 98%, 61%);
+}
+
 #new-input{
     width: 100%;
     border: none;
 }
 
-.list-item{
+.list-item-wrapper{
     display: flex;
-    justify-content: space-evenly;
-    border-bottom: 1px solid hsl(0, 0%, 98%);
+    justify-content: space-between;
+    border-bottom: var(--border-btm);
     padding: 1em;
 }
 

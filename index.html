@@ -9,13 +9,15 @@
   <title>Frontend Mentor | Todo app</title>
   <link href="style.css" rel="stylesheet"/>
 </head>
-<body>
+
+<body class="theme-light">
   
   <header>
     <div class="header-img"></div>
     <div class="header-content">
       <h1>Todo</h1>
-      <input type="checkbox">
+      <input type="checkbox" name="toggle-theme" id="toggle-theme">
+      <label for="toggle-theme"></label>
     </div>
   </header>
   
@@ -25,42 +27,45 @@
     </div>
 
     <div class="list-container">
-      <ul>
-        <li class="list-item">
-          <input type="button"> 
-          <div>
-            Do yoga
-          </div>
-          <input type="button">
-        </li>
+      
+      <ul id="todo-list">
+        <!--         
+        <li class="list-item-wrapper">
+          
+            <input type="checkbox" name="check" id="check"> 
+            <label for="check"></label>
 
-        <li class="list-item">
-          <input type="button"> 
-          <div>
-            Bake a cake
-          </div>
-          <input type="button">
-        </li>
+            <span class="checkbox-circle"></span> 
+            <div class="list-item">
+               ${newInput.value}
+            </div>
+            <input type="button" class="delete-btn">
+        </li> -->
       </ul>
+      
       <div class="summary-container">
-        <p><span>5</span> items left</p>
+        <p><span id="item-counter">0</span> items left</p>
         <input type="button" value="Clear Completed">
       </div>
     </div>
 
-
     <div class="btn-container">
-        <input type="button" value="All">
-        <input type="button" value="Active">
-        <input type="button" value="Completed">
+        <input type="radio" name="render" id="all" checked>
+          <label for="all">All</label>
+        <input type="radio" name="render" id="active">
+          <label for="active">Active</label>
+        <input type="radio" name="render" id="completed">
+          <label for="completed">Completed</label>
     </div>
  
     <p class="info">Drag and drop to reorder list</p>
+
   </main>
 
   <div class="attribution">
     Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
     Coded by <a href="#">Your Name Here</a>.
   </div>
+  <script src="script.js"></script>
 </body>
 </html>
