@@ -1,7 +1,3 @@
-const toDoList = document.getElementById('todo-list');
-const newInput = document.getElementById('new-input');
-
-
 //change theme
 const toggleTheme = document.getElementById('toggle-theme');
 
@@ -11,95 +7,121 @@ toggleTheme.addEventListener("click", () => {
    } else {
       document.querySelector('body').classList.replace('theme-dark', 'theme-light');
    }
-   // [toggleTheme.checked ? 'theme-light' : 'theme-dark'];
 });
 
+const toDoObjectList = [];
 
-// if (document.querySelector('.filter input[type="radio"]:checked').id === 'completed') {
-//         elem.classList.add('hidden');
-//     }
+class ToDo {
+   constructor(item){
+      this.toDoList = item;
+   }
 
-//when enter is pressed   
-newInput.addEventListener("keydown", function (e) {
+   addItem(){
+      const newInput = document.getElementById('new-input').value;
+     
+      if(newInput == ""){
+         console.log("empty input")
+      } else {
+         const toDoObject = {
+            id : toDoObjectList.length,
+            txt : newInput,
+            isCheck : false,
+         }
+
+         toDoObjectList.unshift(toDoObject);
+         this.displayItem();
+         document.getElementById('new-input').value = '';
+        
+      }  
+   }
+
+   countItems(){
+      const itemCounter = document.getElementById('item-counter');
+      let counter = toDoObjectList.length;
+      
+      // @TODO should display 0 when nothing left
+      if(toDoObjectList != []){
+         itemCounter.innerText = counter;
+      } else{
+         itemCounter.innerText = toDoObjectList.length;
+      } 
+   }
+
+   toggleCheck(){
+
+   }
+
+   deleteItem(idx){
+      const itemToDelete = toDoObjectList.findIndex((item)=> item.id == idx);
+      toDoObjectList.splice(itemToDelete,1);
+      this.displayItem();
+   }
+
+   displayItem(){
+
+      this.toDoList.innerHTML = "";
+
+      toDoObjectList.forEach((item) => {
+         
+         const listItem = document.createElement('li');
+         listItem.classList.add("list-item-flex");
+         listItem.setAttribute("data-id", item.id);
+        
+         //parent element label
+         const label = listItem.appendChild(document.createElement(`label`));
+         label.setAttribute("for", "check");
+         label.setAttribute("data-id", item.id);
+            
+            //child element input
+            const input = label.appendChild(document.createElement(`input`));
+            input.setAttribute("type","checkbox");
+            input.setAttribute("name","check");
+
+            //child element i
+            const unChecked = label.appendChild(document.createElement(`i`));
+            unChecked.classList.add("checkbox-circle");
+
+            //child element i
+            const checked = label.appendChild(document.createElement(`i`));
+            checked.classList.add("gradient-circle");  
+
+            //child element span
+            const span = label.appendChild(document.createElement(`span`));
+            span.classList.add("list-item");
+            span.innerText = `${item.txt}`;
+
+            //child element deleteBtn
+            const deleteBtn = listItem.appendChild(document.createElement(`span`));
+            deleteBtn.classList.add("delete-btn");
+            deleteBtn.setAttribute("data-id", item.id);
+
+            deleteBtn.addEventListener("click", function(e) {
+                  const deleteId = e.target.getAttribute("data-id");
+                  newToDoList.deleteItem(deleteId);
+               })
+   
+         this.toDoList.appendChild(listItem);   
+         this.countItems();
+      })
+   }
+}
+
+//main
+const toDoList = document.getElementById('todo-list');
+
+newToDoList = new ToDo(toDoList);
+  
+document.getElementById('new-input').addEventListener("keydown", function (e) {
     if (e.key === "Enter") {  
-      e.preventDefault();
-      checkInput();
-      addNewToDo();
-      howManyItems();
-      newInput.value = ''
+      // e.preventDefault();
+      newToDoList.addItem();
+      
     }
 })
 
-//check input
-function checkInput () {
-   let newToDo = newInput.value;
-   toDoArray.push(newToDo);  
-}
+//@TODO clear completed, remove all checked items
 
-//crreate new li item
-function addNewToDo (){
-   const listItem = document.createElement('li');
+//@TODO filter elements by all, active or by default (switch case)
 
-   listItem.innerHTML = `
+//@TODO drag nad drop to reorder
 
-         <li class="list-item-wrapper">
-          
-            <input type="checkbox" name="check" id="check"> 
-            <label for="check"></label>
-
-            <span class="checkbox-circle"></span> 
-            <div class="list-item">
-               ${newInput.value}
-            </div>
-            <input type="button" class="delete-btn">
-        </li>
-   `;
-
-   toDoList.append(listItem);
-}
-
-//upadate items count, FIND BETTER WAY
-const itemCounter = document.getElementById('item-counter');
-const toDoArray = [];
-
-function howManyItems (){
-   let counter = toDoArray.length;
-   if (counter === undefined || counter === null){
-      itemCounter.innerHTML = 0;
-   } else
-   itemCounter.innerHTML = `${counter}`; 
-}
-
-//if it is checkd as done
-   // const checkItem = document.querySelector('check');
-
-   // toDoList.addEventListener('click', (e) => {
-   //    if(e.target.classList.contains('list-item')){
-   //       checkItem.classList.add('completed');
-   //    }
-      
-   // }) 
-
-
-
-//cross delete button, remove element
-toDoList.addEventListener('click',(event) => {
-    if (event.target.classList.contains('delete-btn')) {
-        removeItem(event.target.parentElement);
-        console.log('delete cross was clicked');
-    }
-});
-
-function removeItem (listItem){
-  listItem.remove();
-  //item counter decreses -1
-
-}
-
-//remove all checked items
-
-
-
-
-
-//filter elements by all, active or by default (switch case)

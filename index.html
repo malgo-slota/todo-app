@@ -29,18 +29,9 @@
     <div class="list-container">
       
       <ul id="todo-list">
-        <!--         
-        <li class="list-item-wrapper">
-          
-            <input type="checkbox" name="check" id="check"> 
-            <label for="check"></label>
-
-            <span class="checkbox-circle"></span> 
-            <div class="list-item">
-               ${newInput.value}
-            </div>
-            <input type="button" class="delete-btn">
-        </li> -->
+                
+        <!-- <li> -->
+       
       </ul>
       
       <div class="summary-container">
@@ -50,12 +41,20 @@
     </div>
 
     <div class="btn-container">
-        <input type="radio" name="render" id="all" checked>
-          <label for="all">All</label>
-        <input type="radio" name="render" id="active">
-          <label for="active">Active</label>
-        <input type="radio" name="render" id="completed">
-          <label for="completed">Completed</label>
+          <label for="all">
+            <input type="radio" name="render" id="all" checked>
+             <span>All</span>
+          </label>
+       
+          <label for="active">
+             <input type="radio" name="render" id="active">
+             <span>Active</span>
+          </label>
+        
+          <label for="completed">
+            <input type="radio" name="render" id="completed">
+            <span>Completed</span>
+          </label>
     </div>
  
     <p class="info">Drag and drop to reorder list</p>
@@ -64,7 +63,7 @@
 
   <div class="attribution">
     Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-    Coded by <a href="#">Your Name Here</a>.
+    Coded by <a href="http://github.com/malgo-slota">malgo-slota</a>.
   </div>
   <script src="script.js"></script>
 </body>
