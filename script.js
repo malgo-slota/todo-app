@@ -9,6 +9,7 @@ toggleTheme.addEventListener("click", () => {
    }
 });
 
+const toDoList = document.getElementById('todo-list');
 const toDoObjectList = [];
 
 class ToDo {
@@ -25,13 +26,12 @@ class ToDo {
          const toDoObject = {
             id : toDoObjectList.length,
             txt : newInput,
-            isCheck : false,
+            isChecked : false,
          }
 
          toDoObjectList.unshift(toDoObject);
          this.displayItem();
          document.getElementById('new-input').value = '';
-        
       }  
    }
 
@@ -47,8 +47,18 @@ class ToDo {
       } 
    }
 
-   toggleCheck(){
+   toggleCheck(selectedId){
 
+      const selectedItemIdx = toDoObjectList.findIndex((item)=> item.id == selectedId);
+
+      if(toDoObjectList[selectedItemIdx].isChecked == false) {
+         toDoObjectList[selectedItemIdx].isChecked = true;
+         // console.log("true");
+      } else {
+         toDoObjectList[selectedItemIdx].isChecked = false;
+         // console.log("false");
+      }
+      this.displayItem()
    }
 
    deleteItem(idx){
@@ -69,21 +79,19 @@ class ToDo {
         
          //parent element label
          const label = listItem.appendChild(document.createElement(`label`));
-         label.setAttribute("for", "check");
-         label.setAttribute("data-id", item.id);
+         label.classList.add("label-txt");
+         //label.setAttribute("data-id", item.id);
             
             //child element input
             const input = label.appendChild(document.createElement(`input`));
             input.setAttribute("type","checkbox");
             input.setAttribute("name","check");
+            // input.setAttribute("value", item.isChecked);
+            input.setAttribute("data-id", item.id);
 
             //child element i
-            const unChecked = label.appendChild(document.createElement(`i`));
-            unChecked.classList.add("checkbox-circle");
-
-            //child element i
-            const checked = label.appendChild(document.createElement(`i`));
-            checked.classList.add("gradient-circle");  
+            const checkMark = label.appendChild(document.createElement(`i`));
+            checkMark.classList.add("checkbox-circle");
 
             //child element span
             const span = label.appendChild(document.createElement(`span`));
@@ -99,16 +107,27 @@ class ToDo {
                   const deleteId = e.target.getAttribute("data-id");
                   newToDoList.deleteItem(deleteId);
                })
-   
-         this.toDoList.appendChild(listItem);   
+
+          
          this.countItems();
+            
+         //checkbox functionality
+            input.addEventListener("click", function(e) {
+               const selectedId = e.target.getAttribute("data-id");
+                  newToDoList.toggleCheck(selectedId);
+            })
+
+            if(item.isChecked){
+               checkMark.classList.add("gradient-circle");
+               span.classList.add("line-through");
+            }
+
+            this.toDoList.appendChild(listItem);  
       })
    }
 }
 
 //main
-const toDoList = document.getElementById('todo-list');
-
 newToDoList = new ToDo(toDoList);
   
 document.getElementById('new-input').addEventListener("keydown", function (e) {

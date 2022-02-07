@@ -142,7 +142,7 @@ main{
     padding: 1em;
 }
 
-.hide{
+input[type="checkbox"]{
     position: absolute;
     opacity: 0;
     cursor: pointer;
@@ -150,23 +150,25 @@ main{
     width: 0;
 }
 
-.checkbox-circle{
-    border: 2px solid red;
-    width: 20px; 
-    height: 20px;
-    padding: 5px;
-    border-radius: 50%;
+i.checkbox-circle{
+    display: inline-block;
+    width: 23px;
+    height: 23px;
+    border-radius: 100px;
     border: 1px solid hsl(236, 9%, 61%);
 }
 
-.gradient-circle{
-    content: url('/images/icon-check.svg');
-    background: linear-gradient(hsl(192, 100%, 67%),hsl(280, 87%, 65%));
+i.checkbox-circle.gradient-circle{
+    background: no-repeat center url('/images/icon-check.svg'), linear-gradient(hsl(192, 100%, 67%),hsl(280, 87%, 65%));
     border: none;
 }
 
 .list-item{
     margin-left: 40px;
+}
+
+.list-item.line-through{
+    text-decoration: line-through;
 }
 
 .delete-btn{
