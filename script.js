@@ -24,6 +24,9 @@ class ToDo {
          console.log("empty input")
       } else {
          const toDoObject = {
+            // it causes problems when items was deleted and new added
+            // it doubles up indexes
+            // @TODO find new way to calculate what idx sholud be 
             id : toDoObjectList.length,
             txt : newInput,
             isChecked : false,
@@ -65,6 +68,47 @@ class ToDo {
       const itemToDelete = toDoObjectList.findIndex((item)=> item.id == idx);
       toDoObjectList.splice(itemToDelete,1);
       this.displayItem();
+   }
+
+   clearCompleted(){
+      const itemsToClear = toDoObjectList.map(function(item, idx) {
+         if(toDoObjectList[idx].isChecked==true){
+            return item;
+         } 
+      });
+
+      const itemsToClear2 = itemsToClear.filter(function (item) {
+         return item !== undefined;
+      })
+
+      itemsToClear2.forEach(item => {
+         this.deleteItem(item.id);
+      })
+      this.displayItem();
+   }
+
+
+   filterItems() {
+      //@TODO filter elements by all, active or by default (switch case)
+      switch (id) {
+         case 'completed':
+               //display only with checked value
+            break;
+      
+         case 'active':
+               //display only with unchecked value
+            break;
+
+            //all by default
+         default: 
+               //display all
+            break;
+      }
+   }
+
+   reorder(){
+      //drag and drop
+      
    }
 
    displayItem(){
@@ -122,7 +166,29 @@ class ToDo {
                span.classList.add("line-through");
             }
 
-            this.toDoList.appendChild(listItem);  
+            //clear completed
+            const clearBtn = document.querySelector(".clear-btn");
+            clearBtn.addEventListener("click", function() {
+                  newToDoList.clearCompleted();
+
+            })
+
+            //filter
+            document.querySelectorAll('.btn-container input').forEach(radio => {
+               radio.addEventListener('change', (e) => {
+                  this.filterItems(e.target.id);
+               });
+            });
+
+            // listItem.addEventListener("drag", function(e) {
+            //    e.preventDefault();
+            // })
+
+            // listItem.addEventListener("drop", function(e) {
+               
+            // } )
+
+            this.toDoList.appendChild(listItem); 
       })
    }
 }
@@ -134,13 +200,6 @@ document.getElementById('new-input').addEventListener("keydown", function (e) {
     if (e.key === "Enter") {  
       // e.preventDefault();
       newToDoList.addItem();
-      
     }
 })
-
-//@TODO clear completed, remove all checked items
-
-//@TODO filter elements by all, active or by default (switch case)
-
-//@TODO drag nad drop to reorder
 

@@ -72,7 +72,7 @@ body{
 
 .theme-dark{
     --main-bg: hsl(235, 21%, 11%);
-    --font-col: hsl(0, 0%, 98%);
+    --font-col: hsl(236, 9%, 61%);
     --container-bg: hsl(237, 14%, 26%);
     --border-btm: 1px solid hsl(234, 11%, 52%);
     --theme-icon-bg: url('./images/icon-sun.svg');
@@ -159,7 +159,7 @@ i.checkbox-circle{
 }
 
 i.checkbox-circle.gradient-circle{
-    background: no-repeat center url('/images/icon-check.svg'), linear-gradient(hsl(192, 100%, 67%),hsl(280, 87%, 65%));
+    background: no-repeat center url("/images/icon-check.svg"), linear-gradient(hsl(192, 100%, 67%),hsl(280, 87%, 65%));
     border: none;
 }
 
@@ -173,10 +173,21 @@ i.checkbox-circle.gradient-circle{
 
 .delete-btn{
     display: block;
-    background: no-repeat url('/images/icon-cross.svg');
+    background: no-repeat url("/images/icon-cross.svg");
     width: 20px;
     height: 20px;
     color:hsl(228, 45%, 44%);
+}
+
+.clear-btn{
+    background: none;
+    border: none;
+    font-family: 'Josefin Sans', sans-serif;
+    color: hsl(236, 9%, 61%)
+}
+
+.clear-btn:hover{
+    opacity: 0.7;
 }
 
 .summary-container{
@@ -184,10 +195,7 @@ i.checkbox-circle.gradient-circle{
     display: flex;
     justify-content: space-between;
     padding: 1em;
-}
-
-.summary-container > input[type="button"]{
-    color: hsl(236, 9%, 61%);
+    font-size: 16px;
 }
 
 /* radio */
