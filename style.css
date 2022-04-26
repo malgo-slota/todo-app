@@ -66,8 +66,8 @@ body{
     --font-col: hsl(235, 19%, 35%);
     --container-bg: white;
     --border-btm:  1px solid hsl(0, 0%, 98%);
-    --theme-icon-bg:  url('/images/icon-moon.svg');
-    --header-img-bg:  center / cover no-repeat url('/images/bg-mobile-light.jpg');
+    --theme-icon-bg:  url('images/icon-moon.svg');
+    --header-img-bg:  center / cover no-repeat url('images/bg-mobile-light.jpg');
 }
 
 .theme-dark{
@@ -75,8 +75,8 @@ body{
     --font-col: hsl(236, 9%, 61%);
     --container-bg: hsl(237, 14%, 26%);
     --border-btm: 1px solid hsl(234, 11%, 52%);
-    --theme-icon-bg: url('./images/icon-sun.svg');
-    --header-img-bg: center / cover no-repeat url('/images/bg-mobile-dark.jpg');
+    --theme-icon-bg: url('images/icon-sun.svg');
+    --header-img-bg: center / cover no-repeat url('images/bg-mobile-dark.jpg');
 }
 
 .header-content #toggle-theme {
@@ -159,7 +159,7 @@ i.checkbox-circle{
 }
 
 i.checkbox-circle.gradient-circle{
-    background: no-repeat center url("/images/icon-check.svg"), linear-gradient(hsl(192, 100%, 67%),hsl(280, 87%, 65%));
+    background: no-repeat center url("images/icon-check.svg"), linear-gradient(hsl(192, 100%, 67%),hsl(280, 87%, 65%));
     border: none;
 }
 
@@ -173,7 +173,7 @@ i.checkbox-circle.gradient-circle{
 
 .delete-btn{
     display: block;
-    background: no-repeat url("/images/icon-cross.svg");
+    background: no-repeat url("images/icon-cross.svg");
     width: 20px;
     height: 20px;
     color:hsl(228, 45%, 44%);
